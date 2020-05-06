@@ -17,6 +17,13 @@ namespace BMI_Calculator
         Gender:
             Console.WriteLine("Write your gender type:");
             string gender = Console.ReadLine();
+            Console.Clear();
+
+            if (string.IsNullOrEmpty(gender))
+            {
+                goto Gender;
+            }
+
             char g = gender[0];
             Console.Clear();
 
