@@ -6,7 +6,6 @@ namespace BMI_Calculator
     {
         private static void Main()
         {
-
         Gender:
             Console.WriteLine("Write your gender type:");
             string gender = Console.ReadLine();
@@ -78,7 +77,7 @@ namespace BMI_Calculator
                 {
                     Console.WriteLine();
                     Console.WriteLine("You should gain: " + diffKgM + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwM + " kg / " + height_num + " m");
+                    Console.WriteLine("Recommended kg for your height: " + ibwM + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     _ = Console.ReadKey();
                 }
@@ -86,7 +85,7 @@ namespace BMI_Calculator
                 {
                     Console.WriteLine();
                     Console.WriteLine("You should gain: " + diffKgF + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwF + " kg / " + height_num + " m");
+                    Console.WriteLine("Recommended kg for your height: " + ibwF + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     _ = Console.ReadKey();
                 }
@@ -118,7 +117,7 @@ namespace BMI_Calculator
                 {
                     Console.WriteLine();
                     Console.WriteLine("You should lose: " + (diffKgM * -1) + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwM + " kg / " + height_num + " m");
+                    Console.WriteLine("Recommended kg for your height: " + ibwM + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     _ = Console.ReadKey();
                 }
@@ -126,7 +125,7 @@ namespace BMI_Calculator
                 {
                     Console.WriteLine();
                     Console.WriteLine("You should lose: " + (diffKgF * -1) + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwF + " kg / " + height_num + " m");
+                    Console.WriteLine("Recommended kg for your height: " + ibwF + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     _ = Console.ReadKey();
                 }
