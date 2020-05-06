@@ -1,44 +1,64 @@
-﻿using System;
+using System;
 
 namespace BMI_Calculator
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            double weight = 0;
-            double height = 0;
-            string gender = "";
+        /*
+        Console.WriteLine("BMI Calculator");
+        Console.WriteLine("");
+        Console.WriteLine("developer: dannybest");
+        System.Threading.Thread.Sleep(5000);
+        Console.Clear();
+        */
 
-            /*
-            Console.WriteLine("BMI Calculator");
-            Console.WriteLine("");
-            Console.WriteLine("developer: dannybest");
-            System.Threading.Thread.Sleep(5000);
-            Console.Clear();
-            */
-
+        Gender:
             Console.WriteLine("Write your gender type:");
-            gender = Console.ReadLine();
+            string gender = Console.ReadLine();
             char g = gender[0];
             Console.Clear();
 
+            if (g != 'f' && g != 'F' && g != 'm' && g != 'M')
+            {
+                // Console.WriteLine("ERROR: You typed a wrong gender.");
+                // Console.WriteLine("m, M, f, F, male, Male, MALE, female, Female, FEMALE");
+                // System.Threading.Thread.Sleep(3000);
+                // Console.Clear();
+                goto Gender;
+            }
+
+        Weight:
             Console.WriteLine("Write your weight in kg:");
-            weight = Convert.ToDouble(Console.ReadLine());
+            string weight = Console.ReadLine();
             Console.Clear();
 
+            if (!double.TryParse(weight, out _))
+            {
+                goto Weight;
+            }
+
+        Height:
             Console.WriteLine("Write your height in m:");
-            height = Convert.ToDouble(Console.ReadLine());
+            string height = Console.ReadLine();
             Console.Clear();
 
-            double bmi = Math.Round((weight / Math.Pow(height, 2)), 2);
-            double heightInch = height / 0.0254;
+            if (!double.TryParse(height, out _))
+            {
+                goto Height;
+            }
 
+            double weight_num = Convert.ToDouble(weight);
+            double height_num = Convert.ToDouble(height);
+            double bmi = Math.Round((weight_num / Math.Pow(height_num, 2)), 2);
+
+            double heightInch = height_num / 0.0254;
             double ibwM = Math.Round(50 + 2.3 * (heightInch - 60));
             double ibwF = Math.Round(45.5 + 2.3 * (heightInch - 60));
 
-            double diffKgM = Math.Round(ibwM - weight);
-            double diffKgF = Math.Round(ibwF - weight);
+            double diffKgM = Math.Round(ibwM - weight_num);
+            double diffKgF = Math.Round(ibwF - weight_num);
 
             if (bmi < 18.5)
             {
@@ -63,7 +83,7 @@ namespace BMI_Calculator
                 {
                     Console.WriteLine();
                     Console.WriteLine("You should gain: " + diffKgM + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwM + " kg / " + height + " m");
+                    Console.WriteLine("Recomanded kg for your height: " + ibwM + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     Console.ReadKey();
                 }
@@ -71,7 +91,7 @@ namespace BMI_Calculator
                 {
                     Console.WriteLine();
                     Console.WriteLine("You should gain: " + diffKgF + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwF + " kg / " + height + " m");
+                    Console.WriteLine("Recomanded kg for your height: " + ibwF + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     Console.ReadKey();
                 }
@@ -102,16 +122,16 @@ namespace BMI_Calculator
                 if (g.Equals('m') || g.Equals('M'))
                 {
                     Console.WriteLine();
-                    Console.WriteLine("You should gain: " + diffKgM + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwM + " kg / " + height + " m");
+                    Console.WriteLine("You should lose: " + (diffKgM * -1) + " kg");
+                    Console.WriteLine("Recomanded kg for your height: " + ibwM + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     Console.ReadKey();
                 }
                 else if (g.Equals('f') || g.Equals('F'))
                 {
                     Console.WriteLine();
-                    Console.WriteLine("You should gain: " + diffKgF + " kg");
-                    Console.WriteLine("Recomanded kg for your height: " + ibwF + " kg / " + height + " m");
+                    Console.WriteLine("You should lose: " + (diffKgF * -1) + " kg");
+                    Console.WriteLine("Recomanded kg for your height: " + ibwF + " kg / " + height_num + " m");
                     Console.WriteLine("Gender: " + gender);
                     Console.ReadKey();
                 }
